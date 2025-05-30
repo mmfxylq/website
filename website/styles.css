@@ -1,0 +1,496 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --primary-color: #9b6b9d;
+    --secondary-color: #f7d1ed;
+    --accent-color: #b784a7;
+    --background-color: #fdf4fa;
+    --text-color: #4a3d4f;
+    --light-purple: #e9d5e9;
+    --dark-purple: #6b4f6b;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Шапка сайта */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(155, 107, 157, 0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    transition: all 0.3s;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.nav-links a:hover {
+    background-color: var(--accent-color);
+}
+
+/* Корзина */
+.cart-icon {
+    position: relative;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+#cart-counter {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Основной контент */
+main {
+    padding: 40px 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--text-color);
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Секция меню */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.pizza-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(155, 107, 157, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    border: 1px solid var(--light-purple);
+    display: flex;
+    flex-direction: column;
+}
+
+.pizza-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pizza-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(155, 107, 157, 0.2);
+}
+
+.pizza-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.pizza-info {
+    padding: 20px;
+    background: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pizza-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.pizza-description {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.pizza-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.add-to-cart {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.add-to-cart:hover {
+    background-color: var(--dark-purple);
+    transform: translateY(-2px);
+}
+
+/* Секция акций */
+.promotions {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 40px;
+    border: 1px solid var(--light-purple);
+}
+
+.promotion-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--light-purple);
+}
+
+.promotion-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(155, 107, 157, 0.1);
+}
+
+.promotion-item.promotion-active {
+    background: var(--light-purple);
+}
+
+.promotion-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Страница доставки */
+.delivery-info {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: 1px solid var(--light-purple);
+}
+
+.delivery-info h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.delivery-info ul {
+    list-style-type: none;
+}
+
+.delivery-info li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+    color: var(--text-color);
+}
+
+.delivery-info li:before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(155, 107, 157, 0.2);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Подвал */
+footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-info {
+    font-size: 14px;
+}
+
+.social-links a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1001;
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90vh;
+    margin: auto;
+    position: relative;
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    transition: transform 0.3s;
+}
+
+.close-modal:hover {
+    transform: scale(1.1);
+}
+
+.modal-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+}
+
+.modal-nav-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 24px;
+    transition: background-color 0.3s;
+    pointer-events: auto;
+}
+
+.modal-nav-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Анимация для модального окна */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-content {
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Переопределение стилей Bootstrap */
+.navbar {
+    background-color: white;
+}
+
+.navbar-brand {
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: var(--text-color) !important;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-purple);
+    border-color: var(--dark-purple);
+    transform: translateY(-2px);
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 180px;
+    }
+    
+    .price-tag {
+        font-size: 1.1rem;
+    }
+}
+
+/* Кнопка корзины */
+#cartButton {
+    position: relative;
+}
+
+#cartCount {
+    position: absolute;
+    top: 0;
+    right: -8px;
+    background-color: var(--accent-color);
+    transition: transform 0.3s;
+}
+
+#cartCount:not(:empty) {
+    transform: scale(1.1);
+} 
